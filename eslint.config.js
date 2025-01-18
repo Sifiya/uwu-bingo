@@ -3,6 +3,7 @@ import solid from 'eslint-plugin-solid/configs/typescript';
 import * as tsParser from '@typescript-eslint/parser';
 import globals from 'globals';
 import stylisticJs from '@stylistic/eslint-plugin-js';
+import typescript from '@typescript-eslint/eslint-plugin';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -15,6 +16,7 @@ export default [
     files: ['**/*.{ts,tsx}'],
     ...solid,
     plugins: {
+      '@typescript-eslint': typescript,
       '@stylistic/js': stylisticJs,
     },
     languageOptions: {
@@ -27,6 +29,7 @@ export default [
       },
     },
     rules: {
+      'no-unused-vars': 'off',
       '@stylistic/js/indent': ['error', 2],
       '@stylistic/js/quotes': ['error', 'single'],
       '@stylistic/js/semi': ['error', 'always'],
@@ -38,6 +41,8 @@ export default [
       '@stylistic/js/space-before-blocks': ['error', 'always'],
       '@stylistic/js/space-in-parens': ['error', 'never'],
       '@stylistic/js/space-infix-ops': 'error',
+      '@typescript-eslint/no-unused-vars': ['error'],
     },
   },
 ];
+
