@@ -1,43 +1,23 @@
 import { useTranslationContext } from '../i18n/context';
 import { cn } from '../utils/class.utils';
+import { Button } from '../components/ui/button';
+import { Header1 } from '../components/typography/Header1';
 
 export const MainPage = () => {
   const i18n = useTranslationContext();
-  const { t, locale, switchLocale } = i18n;
+  const { t } = i18n;
 
   return (
-    <main class={cn('grid grid-cols-2 relative min-h-screen')}>
-      <div class={cn(
-        'fixed bottom-0 right-0 left-0 flex justify-center gap-5',
-        'bg-primary-bg-dark text-primary-text-dark p-5'
-      )}>
-        <p>Current locale: {locale()}</p>
-        <button onClick={() => switchLocale('en')}>EN</button>
-        <button onClick={() => switchLocale('uk')}>UK</button>
-      </div>
-
-      <div class={cn('flex flex-col gap-5 bg-primary-bg text-primary-text p-5')}>
-        <h1>{t('MAIN_PAGE_TITLE')}</h1>
-        <p>{t('MAIN_PAGE_DESCRIPTION')}</p>
-        <button class={cn('bg-button-bg text-button-text p-2 rounded font-semibold')}>
+    <main class={cn(
+      'flex items-center justify-center relative min-h-screen',
+      'bg-gradient-to-bl from-theme-300 to-theme-accent-100'
+    )}>
+      <div class="container flex flex-col items-center justify-center gap-4">
+        <Header1>{t('MAIN_PAGE_TITLE')}</Header1>
+        <p class="text-secondary-foreground">{t('MAIN_PAGE_DESCRIPTION')}</p>
+        <Button size="lg" class="text-lg">
           {t('MAIN_PAGE_BUTTON')}
-        </button>
-        <article class={cn('text-card-text p-5 rounded-lg bg-card-bg shadow-md')}>
-          <h2>{t('MAIN_PAGE_CARD_TITLE')}</h2>
-          <p>{t('MAIN_PAGE_CARD_DESCRIPTION')}</p>
-        </article>
-      </div>
-
-      <div class={cn('flex flex-col gap-5 bg-primary-bg-dark text-primary-text-dark p-5')}>
-        <h1>{t('MAIN_PAGE_TITLE')}</h1>
-        <p>{t('MAIN_PAGE_DESCRIPTION')}</p>
-        <button class={cn('bg-button-bg-dark text-button-text-dark p-2 rounded font-semibold')}>
-          {t('MAIN_PAGE_BUTTON')}
-        </button>
-        <article class={cn('text-card-text-dark p-5 rounded-lg bg-card-bg-dark shadow-md')}>
-          <h2>{t('MAIN_PAGE_CARD_TITLE')}</h2>
-          <p>{t('MAIN_PAGE_CARD_DESCRIPTION')}</p>
-        </article>
+        </Button>
       </div>
     </main>
   );

@@ -11,7 +11,6 @@ export default [
     ignores: ['node_modules', '.next/', 'dist', 'public', '.history/'],
   },
   js.configs.recommended,
-
   {
     files: ['**/*.{ts,tsx}'],
     ...solid,
@@ -25,6 +24,7 @@ export default [
         project: 'tsconfig.json',
       },
       globals: {
+        ...globals.node,
         ...globals.browser,
       },
     },
@@ -41,8 +41,7 @@ export default [
       '@stylistic/js/space-before-blocks': ['error', 'always'],
       '@stylistic/js/space-in-parens': ['error', 'never'],
       '@stylistic/js/space-infix-ops': 'error',
-      '@typescript-eslint/no-unused-vars': ['error']
+      '@typescript-eslint/no-unused-vars': ['error'],
     },
   },
 ];
-

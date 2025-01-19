@@ -2,32 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary-50: 248 249 250; /* #f8f9fA */ 
-  --primary-100: 235 238 239; /* #ebeeef */
-  --primary-200: 224 230 232; /* #e0e6e8 */
-  --primary-300: 166 187 193; /* #a6bbc1 */
-  --primary-400: 127 157 168; /* #7f9dA8 */
-  --primary-500: 101 129 139; /* #65818b */
-  --primary-600: 67 95 105; /* #435f69 */
-  --primary-700: 55 80 89; /* #375059 */
-  --primary-800: 42 65 73; /* #2A4149 */
-  --primary-900: 35 57 64; /* #233940 */
-  --primary-1000: 29 50 57; /* #1D3239 */
-  --white: 255 255 255; /* #ffffff */
-  --accent-300: 255 189 89; /* #ffbd59 */
-  --accent-400: 232 153 34; /* #e89922 */
-  --error-400: 212 50 35; /* #d43223 */
-  --error-500: 182 23 8; /* #b61708 */
-  --success-300: 130 175 66; /* #82af42 */
-  --success-400: 96 123 58; /* #607b3a */
-  --cadet-400: 95 156 161; /* #5F9CA1 */
+@layer base {
+  :root {
+    --background: 196 0% 100%;      /* #FFFFFF */
+    --foreground: 197 24% 28%;       /* #1A1A1A */
+
+    --card: 196 0% 100%;            /* #FFFFFF */
+    --card-foreground: 196 0% 15%;  /* #262626 */
+
+    --popover: 196 0% 100%;         /* #FFFFFF */
+    --popover-foreground: 196 95% 10%; /* #031A1F */
+
+    --primary: 196 22.1% 33.7%;     /* #436E85 */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
+
+    --secondary: 196 10% 90%;       /* #E3E7E9 */
+    --secondary-foreground: 0 0% 0%; /* #000000 */
+
+    --muted: 158 10% 95%;           /* #F0F3F1 */
+    --muted-foreground: 196 0% 40%; /* #666666 */
+
+    --accent: 158 10% 90%;          /* #E1E7E3 */
+    --accent-foreground: 196 0% 15%; /* #262626 */
+
+    --destructive: 0 50% 50%;       /* #BF4040 */
+    --destructive-foreground: 196 0% 100%; /* #FFFFFF */
+
+    --border: 196 20% 82%;          /* #C7D3D9 */
+    --input: 196 20% 50%;           /* #668999 */
+    --ring: 196 22.1% 33.7%;        /* #436E85 */
+
+    --radius: 1rem;
+
+    --theme-50: 210 20% 98%; /* #f8f9fA */
+    --theme-100: 204 13% 93%; /* #ebeeef */
+    --theme-200: 200 13% 89%; /* #e0e6e8 */
+    --theme-300: 197 15% 70%; /* #a6bbc1 */
+    --theme-400: 197 17% 58%; /* #7f9dA8 */
+    --theme-500: 197 16% 47%; /* #65818b */
+    --theme-600: 197 22% 34%; /* #435f69 */
+    --theme-700: 197 24% 28%; /* #375059 */
+    --theme-800: 197 27% 23%; /* #2A4149 */
+    --theme-900: 197 29% 19%; /* #233940 */
+    --theme-1000: 197 33% 17%; /* #1D3239 */
+    --theme-accent-300: 37 100% 67%; /* #ffbd59 */
+    --theme-accent-400: 35 85% 52%; /* #e89922 */
+    --theme-error-400: 5 72% 48%; /* #d43223 */
+    --theme-error-500: 5 91% 37%; /* #b61708 */
+    --theme-success-300: 84 45% 47%; /* #82af42 */
+    --theme-success-400: 84 36% 35%; /* #607b3a */
+    --theme-cadet-400: 183 26% 50%; /* #5F9CA1 */
+  }
+
+  [data-kb-theme='dark'] {
+    --background: 196 10% 10%;      /* #171B1D */
+    --foreground: 196 0% 100%;      /* #FFFFFF */
+
+    --card: 196 0% 10%;             /* #1A1A1A */
+    --card-foreground: 196 0% 100%; /* #FFFFFF */
+
+    --popover: 196 10% 5%;          /* #0B0D0E */
+    --popover-foreground: 196 0% 100%; /* #FFFFFF */
+
+    --primary: 196 22.1% 33.7%;     /* #436E85 */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
+
+    --secondary: 196 10% 20%;       /* #2E3538 */
+    --secondary-foreground: 0 0% 100%; /* #FFFFFF */
+
+    --muted: 158 10% 25%;           /* #394C41 */
+    --muted-foreground: 196 0% 65%; /* #A6A6A6 */
+
+    --accent: 158 10% 25%;          /* #394C41 */
+    --accent-foreground: 196 0% 95%; /* #F2F2F2 */
+
+    --destructive: 0 50% 50%;       /* #BF4040 */
+    --destructive-foreground: 196 0% 100%; /* #FFFFFF */
+
+    --border: 196 20% 50%;          /* #668999 */
+    --input: 196 20% 50%;           /* #668999 */
+    --ring: 196 22.1% 33.7%;        /* #436E85 */
+  }
 }
 
-body {
-  margin: 0;
-  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
-

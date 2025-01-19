@@ -35,13 +35,17 @@ describe('TranslationProvider', () => {
   test('should render with default locale', async () => {
     const { getByTestId } = render(() => <WrappedTestComponent />);
     await waitFor(() => {
-      expect(getByTestId('main-page-title')).toHaveTextContent('Генератор бінго');
+      expect(getByTestId('main-page-title')).toHaveTextContent(
+        'Генератор бінго',
+      );
       expect(getByTestId('locale')).toHaveTextContent('Locale is uk');
     });
   });
 
   test('should switch locale', async () => {
-    const { findByTestId, getByTestId } = render(() => <WrappedTestComponent />);
+    const { findByTestId, getByTestId } = render(() => (
+      <WrappedTestComponent />
+    ));
     const button = await findByTestId('switch-locale');
     await user.click(button);
 

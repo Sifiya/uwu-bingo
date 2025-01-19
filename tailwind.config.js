@@ -1,57 +1,106 @@
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: ['class', '[data-kb-theme="dark"]'],
   content: ['./src/**/*.{ts,tsx}', './index.html'],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: '2rem',
+        screens: {
+          '2xl': '1400px',
+        },
+      },
       colors: {
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
         primary: {
-          50: "rgb(var(--primary-50) / <alpha-value>)",
-          100: "rgb(var(--primary-100) / <alpha-value>)",
-          200: "rgb(var(--primary-200) / <alpha-value>)",
-          300: "rgb(var(--primary-300) / <alpha-value>)",
-          400: "rgb(var(--primary-400) / <alpha-value>)",
-          500: "rgb(var(--primary-500) / <alpha-value>)",
-          600: "rgb(var(--primary-600) / <alpha-value>)",
-          700: "rgb(var(--primary-700) / <alpha-value>)",
-          800: "rgb(var(--primary-800) / <alpha-value>)",
-          900: "rgb(var(--primary-900) / <alpha-value>)",
-          1000: "rgb(var(--primary-1000) / <alpha-value>)",
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
         },
-        white: "rgb(var(--white) / <alpha-value>)",
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
         accent: {
-          300: "rgb(var(--accent-300) / <alpha-value>)",
-          400: "rgb(var(--accent-400) / <alpha-value>)",
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
         },
-        error: {
-          400: "rgb(var(--error-400) / <alpha-value>)",
-          500: "rgb(var(--error-500) / <alpha-value>)",
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
         },
-        success: {
-          300: "rgb(var(--success-300) / <alpha-value>)",
-          400: "rgb(var(--success-400) / <alpha-value>)",
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
         },
-        cadet: {
-          400: "rgb(var(--cadet-400) / <alpha-value>)",
+        theme: {
+          50: 'hsl(var(--theme-50))',
+          100: 'hsl(var(--theme-100))',
+          200: 'hsl(var(--theme-200))',
+          300: 'hsl(var(--theme-300))',
+          400: 'hsl(var(--theme-400))',
+          500: 'hsl(var(--theme-500))',
+          600: 'hsl(var(--theme-600))',
+          700: 'hsl(var(--theme-700))',
+          800: 'hsl(var(--theme-800))',
+          900: 'hsl(var(--theme-900))',
+          1000: 'hsl(var(--theme-1000))',
+          'accent-300': 'hsl(var(--theme-accent-300))',
+          'accent-400': 'hsl(var(--theme-accent-400))',
+          'error-400': 'hsl(var(--theme-error-400))',
+          'error-500': 'hsl(var(--theme-error-500))',
+          'success-300': 'hsl(var(--theme-success-300))',
+          'success-400': 'hsl(var(--theme-success-400))',
+          'cadet-400': 'hsl(var(--theme-cadet-400))'
+        }
+      },
+      borderRadius: {
+        lg: `var(--radius)`,
+        md: `calc(var(--radius) - 2px)`,
+        sm: 'calc(var(--radius) - 4px)',
+      },
+      fontFamily: {
+        sans: ['Inter Variable', ...fontFamily.sans],
+      },
+      keyframes: {
+        'accordion-down': {
+          from: { height: 0 },
+          to: { height: 'var(--kb-accordion-content-height)' },
         },
-        'primary-bg': 'rgb(var(--primary-100) / <alpha-value>)',
-        'primary-text': 'rgb(var(--primary-700) / <alpha-value>)',
-        'primary-bg-dark': 'rgb(var(--primary-800) / <alpha-value>)',
-        'primary-text-dark': 'rgb(var(--primary-50) / <alpha-value>)',
-        'secondary-text': 'rgb(var(--primary-500) / <alpha-value>)',
-        'secondary-text-dark': 'rgb(var(--primary-300) / <alpha-value>)',
-
-        'button-bg': 'rgb(var(--accent-400) / <alpha-value>)',
-        'button-text': 'rgb(var(--white) / <alpha-value>)',
-        'button-bg-dark': 'rgb(var(--accent-300) / <alpha-value>)',
-        'button-text-dark': 'rgb(var(--primary-700) / <alpha-value>)',
-
-        'card-bg': 'rgb(var(--primary-50) / <alpha-value>)',
-        'card-bg-dark': 'rgb(var(--primary-900) / <alpha-value>)',
-        'card-text': 'rgb(var(--primary-700) / <alpha-value>)',
-        'card-text-dark': 'rgb(var(--primary-50) / <alpha-value>)',
+        'accordion-up': {
+          from: { height: 'var(--kb-accordion-content-height)' },
+          to: { height: 0 },
+        },
+        'collapsible-down': {
+          from: { height: 0 },
+          to: { height: 'var(--kb-collapsible-content-height)' },
+        },
+        'collapsible-up': {
+          from: { height: 'var(--kb-collapsible-content-height)' },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        'collapsible-down': 'collapsible-down 0.2s ease-out',
+        'collapsible-up': 'collapsible-up 0.2s ease-out',
       },
     },
   },
-  plugins: [],
-}
-
+  plugins: [require('tailwindcss-animate')],
+};

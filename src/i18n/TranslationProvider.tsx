@@ -14,7 +14,7 @@ import type { Locale, Dictionary, RawDictionary } from './types';
 
 const locales = { en, uk };
 
-async function fetchDictionary(locale: Locale): Promise<Dictionary> {
+async function fetchDictionary (locale: Locale): Promise<Dictionary> {
   const dict: RawDictionary = locales[locale].dict;
   return i18n.flatten(dict);
 }
@@ -22,18 +22,22 @@ async function fetchDictionary(locale: Locale): Promise<Dictionary> {
 export const TranslationProvider = (props: { children: JSX.Element }) => {
   const [locale, setLocale] = createSignal<Locale>('uk');
   const [duringLocaleTransition, startLocaleTransition] = useTransition();
-  const [dict] = createResource(locale, fetchDictionary, { initialValue: i18n.flatten(locales.uk.dict) });
-  function switchLocale(locale: Locale) {
+  const [dict] = createResource(locale, fetchDictionary, {
+    initialValue: i18n.flatten(locales.uk.dict),
+  });
+  function switchLocale (locale: Locale) {
     startLocaleTransition(() => setLocale(locale));
   }
 
   return (
     <Suspense>
       <Show when={dict()}>
-        {dict => {
+        {(dict) => {
           const t = i18n.translator(dict, i18n.resolveTemplate);
           return (
-            <TranslationContext.Provider value={{ locale, switchLocale, t, duringLocaleTransition }}>
+            <TranslationContext.Provider
+              value={{ locale, switchLocale, t, duringLocaleTransition }}
+            >
               {props.children}
             </TranslationContext.Provider>
           );
