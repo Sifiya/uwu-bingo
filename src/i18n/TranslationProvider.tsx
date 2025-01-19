@@ -14,7 +14,6 @@ import type { Locale, Dictionary, RawDictionary } from './types';
 
 const locales = { en, uk };
 
-
 async function fetchDictionary(locale: Locale): Promise<Dictionary> {
   const dict: RawDictionary = locales[locale].dict;
   return i18n.flatten(dict);

@@ -37,11 +37,11 @@ export default [
       '@stylistic/js/no-multi-spaces': 'error',
       '@stylistic/js/no-multiple-empty-lines': ['error', { max: 1 }],
       '@stylistic/js/no-whitespace-before-property': 'error',
-      '@stylistic/js/space-before-function-paren': ['error', 'never'],
+      '@stylistic/js/space-before-function-paren': ['error', 'always'],
       '@stylistic/js/space-before-blocks': ['error', 'always'],
       '@stylistic/js/space-in-parens': ['error', 'never'],
       '@stylistic/js/space-infix-ops': 'error',
-      '@typescript-eslint/no-unused-vars': ['error'],
+      '@typescript-eslint/no-unused-vars': ['error']
     },
   },
 ];
