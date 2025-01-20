@@ -2,10 +2,9 @@ import { RawDictionary } from '../types';
 
 export const dict: RawDictionary = {
   MAIN_PAGE_TITLE: 'Bingo Generator',
-  MAIN_PAGE_DESCRIPTION: 'To start, click the button below',
-  MAIN_PAGE_BUTTON: 'Start',
-  MAIN_PAGE_CARD_TITLE: 'History',
-  MAIN_PAGE_CARD_DESCRIPTION: 'To start, click the button below',
+  MAIN_PAGE_DESCRIPTION: 'Create personalized bingo cards, share the link with friends, fill them out online, conveniently share images in social media.',
+  MAIN_PAGE_CALL_TO_ACTION: 'To start, click the button below',
+  MAIN_PAGE_BUTTON: 'Create bingo',
 };
 
 export type Dict = typeof dict;
