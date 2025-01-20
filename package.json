@@ -19,6 +19,7 @@
     "@stylistic/eslint-plugin-js": "^2.13.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/user-event": "^14.6.0",
+    "@types/node": "^22.10.7",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.18.0",
     "eslint-plugin-solid": "^0.14.5",

@@ -1,8 +1,8 @@
-import { useTranslationContext } from '../i18n/context';
-import { cn } from '../utils/class.utils';
-import { Button } from '../components/ui/button';
-import { Header1 } from '../components/typography/header1';
-import { Paragraph } from '../components/typography/paragraph';
+import { useTranslationContext } from '@/i18n/context';
+import { cn } from '@/utils/class.utils';
+import { Button } from '@/components/ui/button';
+import { Header1 } from '@/components/typography/header1';
+import { Paragraph } from '@/components/typography/paragraph';
 import type { Component } from 'solid-js';
 
 const Home: Component = () => {
