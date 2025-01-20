@@ -7,7 +7,7 @@ import App from './App';
 import { Router, Route } from '@solidjs/router';
 
 const Home = lazy(() => import('./pages/Home'));
-const About = lazy(() => import('./pages/About'));
+const Create = lazy(() => import('./pages/Create'));
 const root = document.getElementById('root');
 
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
@@ -20,7 +20,7 @@ render(
   () => (
     <Router root={App}>
       <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
+      <Route path="/create" component={Create} />
     </Router>
   ),
   root!,

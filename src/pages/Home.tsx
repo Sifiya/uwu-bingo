@@ -24,7 +24,7 @@ const Home: Component = () => {
           </Paragraph>
         </div>
 
-        <Button size="lg" class="text-lg w-64">
+        <Button as="a" href="/create" size="lg" class="text-lg w-64">
           {i18n.t('MAIN_PAGE_BUTTON')}
         </Button>
       </div>
