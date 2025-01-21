@@ -2,18 +2,14 @@ import { useTranslationContext } from '@/i18n/context';
 import { cn } from '@/utils/class.utils';
 import { Paragraph } from '@/components/typography/paragraph';
 import type { Accessor, Component } from 'solid-js';
+import { BingoCell } from '@/types';
 
 type BingoTemplateShowProps = {
   height: Accessor<number>;
   title: Accessor<string>;
-  cells: Accessor<{
-    text: string;
-  }[]>;
+  cells: Accessor<BingoCell[]>;
   onClickCell: (index: number) => void;
-  currentCell: Accessor<{
-    text: string;
-    index: number;
-  }>;
+  currentCell: Accessor<BingoCell | null>;
 };
 
 export const BingoTemplateShow: Component<BingoTemplateShowProps> = (props) => {
@@ -39,14 +35,14 @@ export const BingoTemplateShow: Component<BingoTemplateShowProps> = (props) => {
       )}>
         {props.cells().map((cell, index) => (
           <div
-            style={{ 'word-break': 'break-word' }}
+            style={{ 'word-break': 'break-word', 'font-size': `${cell.sizeMultiplier}cqw` }}
             class={cn(
               'aspect-square bg-white p-[1cqw]',
               'flex items-center justify-center',
-              'text-[2.7cqw] text-center font-semibold',
+              'text-center font-semibold',
               'overflow-hidden text-wrap break-words',
               'cursor-pointer',
-              props.currentCell().index === index && 'bg-theme-200',
+              props.currentCell()?.index === index && 'bg-theme-200',
             )} onClick={() => {
               props.onClickCell(index);
               document.getElementById('bingo-cell-input')?.focus();

@@ -6,31 +6,34 @@ import { BingoTemplateShow } from '@/features/bingo/bingoTemplateShow';
 import { BingoTemplateForm } from '@/features/bingo/bingoTemplateForm';
 
 import type { Component } from 'solid-js';
+import type { BingoCell } from '@/types';
 
 const Create: Component = () => {
   const i18n = useTranslationContext();
 
   const [bingoHeight, setBingoHeight] = createSignal(0);
   const [bingoTitle, setBingoTitle] = createSignal(i18n.t('CREATE_FORM_INPUT_TITLE_PLACEHOLDER'));
-  const [bingoCells, setBingoCells] = createSignal(
+  const [bingoCells, setBingoCells] = createSignal<BingoCell[]>(
     new Array(25).fill(null).map((_, index) => ({
       text: `Cell ${index + 1}`,
+      sizeMultiplier: 3,
+      index,
     })),
   );
-  const [currentCell, setCurrentCell] = createSignal({
-    text: '',
-    index: -1,
-  });
+  const [currentCell, setCurrentCell] = createSignal<BingoCell | null>(null);
 
   function onClickCell (index: number) {
-    setCurrentCell({
-      text: bingoCells()[index].text,
-      index,
-    });
+    setCurrentCell(bingoCells()[index]);
   }
 
   function onInputCell (index: number, text: string) {
-    setBingoCells(prev => [...prev.slice(0, index), { text }, ...prev.slice(index + 1)]);
+    const prevCellValue = bingoCells()[index];
+    setBingoCells(prev => [...prev.slice(0, index), { ...prevCellValue, text }, ...prev.slice(index + 1)]);
+  }
+
+  function onInputCellSizeMultiplier (index: number, sizeMultiplier: number) {
+    const prevCellValue = bingoCells()[index];
+    setBingoCells(prev => [...prev.slice(0, index), { ...prevCellValue, sizeMultiplier }, ...prev.slice(index + 1)]);
   }
 
   function onResize () {
@@ -85,6 +88,7 @@ const Create: Component = () => {
             currentCell={currentCell}
             setCurrentCell={setCurrentCell}
             onInputCell={onInputCell}
+            onInputCellSizeMultiplier={onInputCellSizeMultiplier}
           />
         </div>
       </div>
