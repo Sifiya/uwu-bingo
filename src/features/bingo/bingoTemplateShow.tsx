@@ -4,6 +4,7 @@ import { Paragraph } from '@/components/typography/paragraph';
 import type { Accessor, Component } from 'solid-js';
 
 type BingoTemplateShowProps = {
+  height: Accessor<number>;
   title: Accessor<string>;
   cells: Accessor<{
     text: string;
@@ -21,7 +22,7 @@ export const BingoTemplateShow: Component<BingoTemplateShowProps> = (props) => {
   return (
     <article
       class="flex flex-col gap-4 items-center bg-theme-700 aspect-[10/12] h-full max-h-full p-6 pt-4 pb-10"
-      style={{ 'container-type': 'inline-size' }}
+      style={{ 'container-type': 'size', height: `${props.height()}px` }}
       id="bingo-template"
     >
       <h2
@@ -37,17 +38,19 @@ export const BingoTemplateShow: Component<BingoTemplateShowProps> = (props) => {
         'gap-[1cqw] bg-theme-300 border-[1cqw] border-theme-300',
       )}>
         {props.cells().map((cell, index) => (
-          <div class={cn(
-            'aspect-square bg-white p-[1cqw]',
-            'flex items-center justify-center',
-            'text-[3cqw] text-center font-semibold',
-            'overflow-hidden',
-            'cursor-pointer',
-            props.currentCell().index === index && 'bg-theme-200',
-          )} onClick={() => {
-            props.onClickCell(index);
-            document.getElementById('bingo-cell-input')?.focus();
-          }}>
+          <div
+            style={{ 'word-break': 'break-word' }}
+            class={cn(
+              'aspect-square bg-white p-[1cqw]',
+              'flex items-center justify-center',
+              'text-[2.7cqw] text-center font-semibold',
+              'overflow-hidden text-wrap break-words',
+              'cursor-pointer',
+              props.currentCell().index === index && 'bg-theme-200',
+            )} onClick={() => {
+              props.onClickCell(index);
+              document.getElementById('bingo-cell-input')?.focus();
+            }}>
             {cell.text}
           </div>
         ))}
