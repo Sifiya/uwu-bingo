@@ -7,6 +7,7 @@ export const dict: RawDictionary = {
   MAIN_PAGE_BUTTON: 'Create bingo',
   HEADER_NAV_HOME: 'Home',
   HEADER_NAV_CREATE: 'Create',
+  CREATE_PAGE_TITLE: 'Create bingo',
 };
 
 export type Dict = typeof dict;

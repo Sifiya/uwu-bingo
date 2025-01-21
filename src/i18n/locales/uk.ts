@@ -5,6 +5,7 @@ export const dict = {
   MAIN_PAGE_BUTTON: 'Створити бінго',
   HEADER_NAV_HOME: 'Головна',
   HEADER_NAV_CREATE: 'Створити',
+  CREATE_PAGE_TITLE: 'Створити бінго',
 };
 
 export type Dict = typeof dict;
