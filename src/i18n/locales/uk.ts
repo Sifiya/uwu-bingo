@@ -6,6 +6,12 @@ export const dict = {
   HEADER_NAV_HOME: 'Головна',
   HEADER_NAV_CREATE: 'Створити',
   CREATE_PAGE_TITLE: 'Створити бінго',
+  CREATE_FORM_INPUT_TITLE_LABEL: 'Назва картки',
+  CREATE_FORM_INPUT_TITLE_PLACEHOLDER: 'Введіть назву картки',
+  CREATE_FORM_INPUT_CELL_LABEL: 'Текст для поточної клітинки',
+  CREATE_FORM_INPUT_CELL_PLACEHOLDER: 'Наприклад: "Купити подарунок"',
+  CREATE_FORM_INPUT_CELL_NOTE: 'Оберіть клітинку, щоб змінити текст',
+  CREATE_FORM_BUTTON_DOWNLOAD: 'Завантажити',
 };
 
 export type Dict = typeof dict;

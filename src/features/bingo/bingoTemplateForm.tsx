@@ -1,3 +1,4 @@
+import { useTranslationContext } from '@/i18n/context';
 import { BingoDownloadButton } from './bingoDownloadButton';
 import { TextField, TextFieldLabel, TextFieldRoot } from '@/components/ui/textfield';
 import { Paragraph } from '@/components/typography/paragraph';
@@ -18,23 +19,30 @@ export type BingoTemplateFormProps = {
 };
 
 export const BingoTemplateForm: Component<BingoTemplateFormProps> = (props) => {
+  const i18n = useTranslationContext();
+
   return (
     <>
       <TextFieldRoot>
         <TextFieldLabel>
-          Назва картки
+          {i18n.t('CREATE_FORM_INPUT_TITLE_LABEL')}
         </TextFieldLabel>
-        <TextField value={props.bingoTitle()} onInput={e => {
-          const target = e.target as HTMLInputElement;
-          props.setBingoTitle(target.value);
-        }} />
+        <TextField
+          placeholder={i18n.t('CREATE_FORM_INPUT_TITLE_PLACEHOLDER')}
+          value={props.bingoTitle()}
+          onInput={e => {
+            const target = e.target as HTMLInputElement;
+            props.setBingoTitle(target.value);
+          }}
+        />
       </TextFieldRoot>
 
       <TextFieldRoot>
         <TextFieldLabel>
-          Текст для поточної клітинки
+          {i18n.t('CREATE_FORM_INPUT_CELL_LABEL')}
         </TextFieldLabel>
         <TextField
+          placeholder={i18n.t('CREATE_FORM_INPUT_CELL_PLACEHOLDER')}
           value={props.currentCell().text}
           disabled={props.currentCell().index === -1}
           onInput={e => {
@@ -47,7 +55,7 @@ export const BingoTemplateForm: Component<BingoTemplateFormProps> = (props) => {
           }}
         />
         <Paragraph variant="secondary" class="text-xs">
-          Оберіть клітинку, щоб змінити текст
+          {i18n.t('CREATE_FORM_INPUT_CELL_NOTE')}
         </Paragraph>
       </TextFieldRoot>
       <BingoDownloadButton />

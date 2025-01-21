@@ -1,8 +1,10 @@
+import { useTranslationContext } from '@/i18n/context';
 import * as htmlToImage from 'html-to-image';
 import { Button } from '@/components/ui/button';
 import type { Component } from 'solid-js';
 
 export const BingoDownloadButton: Component = () => {
+  const i18n = useTranslationContext();
   return (
     <Button
       variant="default"
@@ -25,7 +27,7 @@ export const BingoDownloadButton: Component = () => {
       }}
     >
       <i class="ri-download-cloud-line text-xl"></i>
-      <span>Завантажити</span>
+      <span>{i18n.t('CREATE_FORM_BUTTON_DOWNLOAD')}</span>
     </Button>
   );
 };
