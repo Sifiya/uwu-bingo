@@ -12,6 +12,7 @@ export const dict = {
   CREATE_FORM_INPUT_CELL_PLACEHOLDER: 'Наприклад: "Купити подарунок"',
   CREATE_FORM_INPUT_CELL_NOTE: 'Оберіть клітинку, щоб змінити текст',
   CREATE_FORM_BUTTON_DOWNLOAD: 'Завантажити',
+  BINGO_TEMPLATE_FOOTER: 'Зроблено генератором бінго UWURead',
 };
 
 export type Dict = typeof dict;

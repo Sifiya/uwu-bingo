@@ -28,6 +28,7 @@ export const BingoTemplateForm: Component<BingoTemplateFormProps> = (props) => {
           {i18n.t('CREATE_FORM_INPUT_TITLE_LABEL')}
         </TextFieldLabel>
         <TextField
+          id="bingo-title-input"
           placeholder={i18n.t('CREATE_FORM_INPUT_TITLE_PLACEHOLDER')}
           value={props.bingoTitle()}
           onInput={e => {
@@ -42,6 +43,7 @@ export const BingoTemplateForm: Component<BingoTemplateFormProps> = (props) => {
           {i18n.t('CREATE_FORM_INPUT_CELL_LABEL')}
         </TextFieldLabel>
         <TextField
+          id="bingo-cell-input"
           placeholder={i18n.t('CREATE_FORM_INPUT_CELL_PLACEHOLDER')}
           value={props.currentCell().text}
           disabled={props.currentCell().index === -1}

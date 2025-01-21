@@ -14,6 +14,7 @@ export const dict: RawDictionary = {
   CREATE_FORM_INPUT_CELL_PLACEHOLDER: 'For example: "Buy a gift"',
   CREATE_FORM_INPUT_CELL_NOTE: 'Select a cell to change the text',
   CREATE_FORM_BUTTON_DOWNLOAD: 'Download',
+  BINGO_TEMPLATE_FOOTER: 'Made by Bingo Generator UWURead',
 };
 
 export type Dict = typeof dict;

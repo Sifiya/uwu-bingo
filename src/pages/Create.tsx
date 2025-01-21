@@ -10,7 +10,7 @@ import type { Component } from 'solid-js';
 const Create: Component = () => {
   const i18n = useTranslationContext();
 
-  const [bingoTitle, setBingoTitle] = createSignal('Bingo template');
+  const [bingoTitle, setBingoTitle] = createSignal(i18n.t('CREATE_FORM_INPUT_TITLE_PLACEHOLDER'));
   const [bingoCells, setBingoCells] = createSignal(
     new Array(25).fill(null).map((_, index) => ({
       text: `Cell ${index + 1}`,
@@ -36,20 +36,21 @@ const Create: Component = () => {
     <section class={cn(
       'grow w-full h-full px-6 py-3 flex flex-col items-center justify-center',
     )}>
-      <div class="grow container grid grid-cols-[1fr_300px]">
-        <div>
-          <Header1 class="text-2xl mb-6">
-            {i18n.t('CREATE_PAGE_TITLE')}
-          </Header1>
+      <Header1 class="text-2xl w-full text-left">
+        {i18n.t('CREATE_PAGE_TITLE')}
+      </Header1>
 
-          <div class="flex justify-center items-center">
-            <BingoTemplateShow
-              title={bingoTitle}
-              cells={bingoCells}
-              onClickCell={onClickCell}
-              currentCell={currentCell}
-            />
-          </div>
+      <div class="grow container grid grid-cols-[1fr_300px]">
+        <div class={cn(
+          'flex justify-center justify-self-center items-center',
+          'max-w-fit grow overflow-hidden'
+        )}>
+          <BingoTemplateShow
+            title={bingoTitle}
+            cells={bingoCells}
+            onClickCell={onClickCell}
+            currentCell={currentCell}
+          />
         </div>
         <div class="flex flex-col gap-4">
           <BingoTemplateForm
