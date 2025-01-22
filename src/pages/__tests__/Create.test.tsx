@@ -3,7 +3,7 @@ import { render, screen, cleanup, waitFor } from '@solidjs/testing-library';
 import { userEvent, UserEvent } from '@testing-library/user-event';
 import { t } from '@/utils/test.utils';
 
-import Create from '../Create';
+import Create from '../Create/Create';
 import { TranslationProvider } from '@/i18n/TranslationProvider';
 
 const { mockToPng } = vi.hoisted(() => ({

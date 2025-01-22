@@ -7,7 +7,7 @@ import App from './App';
 import { Router, Route } from '@solidjs/router';
 
 const Home = lazy(() => import('./pages/Home'));
-const Create = lazy(() => import('./pages/Create'));
+const Create = lazy(() => import('./pages/Create/Create'));
 const root = document.getElementById('root');
 
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
