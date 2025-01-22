@@ -31,7 +31,7 @@ const Create: Component = () => {
       </Header1>
 
       <div
-        class="grow container flex flex-row justify-center gap-8 overflow-hidden"
+        class="grow container flex flex-row justify-center gap-8 overflow-hidden basis-0"
         id="bingo-container"
       >
         <div
@@ -49,7 +49,7 @@ const Create: Component = () => {
             currentCell={createHook.currentCell}
           />
         </div>
-        <div class="flex flex-col gap-3 w-[300px] px-1">
+        <div class="flex w-[310px] pl-1 pr-4 flex-col overflow-y-auto gap-3 uwu-scrollbar">
           <BingoTemplateForm
             bingoColors={createHook.bingoColors}
             setBingoColors={createHook.setBingoColors}

@@ -93,3 +93,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+.uwu-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted)) hsl(var(--background));
+}
