@@ -1,42 +1,56 @@
-import './numberSlider.css';
-
 import { cn } from '@/utils/class.utils';
-import { Paragraph } from '@/components/typography/paragraph';
-import type { Component } from 'solid-js';
+import { Slider } from '@kobalte/core/slider';
 
-type NumberSliderProps = {
+import { Show, type Component } from 'solid-js';
+
+type numberSliderProps = {
+  class?: string;
+  label?: string;
   min: number;
   max: number;
-  step?: number;
-  value: number;
-  onChange: (value: number) => void;
+  step: number;
+  value: number[];
+  onChange: (value: number[]) => void;
   disabled?: boolean;
 };
 
-export const NumberSlider: Component<NumberSliderProps> = (props) => {
+export const NumberSlider: Component<numberSliderProps> = (props) => {
   return (
-    <div class="w-full py-2 flex flex-col gap-2 items-center">
-      <input
-        class={cn(
-          'appearance-none outline-none',
-          'w-full h-2 bg-secondary rounded',
-          'number-slider',
-          'disabled:opacity-50 disabled:cursor-not-allowed',
-          'transition-all duration-300',
-        )}
-        type="range"
-        step={props.step ?? 1}
-        min={props.min}
-        max={props.max}
-        value={props.value}
-        disabled={props.disabled}
-        onChange={e => {
-          props.onChange(Number(e.target.value));
-        }}
-      />
-      <Paragraph variant="secondary" class="text-xs">
-        {props.value}
-      </Paragraph>
-    </div>
+    <Slider
+      class={cn(
+        'relative w-full flex flex-col items-center gap-2',
+        'select-none touch-none',
+        props.disabled && 'opacity-50',
+        props.class,
+      )}
+      minValue={props.min}
+      maxValue={props.max}
+      step={props.step}
+      value={props.value}
+      onChange={props.onChange}
+      disabled={props.disabled}
+      defaultValue={props.value}
+    >
+      <div class="w-full flex items-center gap-2 text-sm">
+        <Show when={props.label}>
+          <Slider.Label class="text-sm text-left w-full">
+            {props.label}
+          </Slider.Label>
+        </Show>
+        <Slider.ValueLabel class="w-7 text-center text-muted-foreground" />
+      </div>
+
+      <Slider.Track class="relative h-2 w-full rounded-full bg-muted">
+        <Slider.Fill class="absolute bg-ring h-full rounded-full" />
+        <Slider.Thumb class={cn(
+          'block w-5 h-5 -top-[6px]',
+          'bg-muted border-primary border-2 rounded-full',
+          'hover:shadow-[0_0_0_3px_#E3E7E998]',
+          'focus:shadow-[0_0_0_3px_#E3E7E998] focus:outline-none',
+        )}>
+          <Slider.Input />
+        </Slider.Thumb>
+      </Slider.Track>
+    </Slider>
   );
 };

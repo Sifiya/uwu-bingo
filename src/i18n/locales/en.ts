@@ -12,7 +12,8 @@ export const dict: RawDictionary = {
   CREATE_FORM_INPUT_TITLE_PLACEHOLDER: 'Enter card title',
   CREATE_FORM_INPUT_CELL_LABEL: 'Text for current cell',
   CREATE_FORM_INPUT_CELL_PLACEHOLDER: 'For example: "Buy a gift"',
-  CREATE_FORM_INPUT_CELL_NOTE: 'Select a cell to change the text',
+  CREATE_FORM_INPUT_CELL_NOTE: 'Select a cell to edit it\'s text',
+  CREATE_FORM_INPUT_CELL_SIZE_LABEL: 'Text size',
   CREATE_FORM_BUTTON_DOWNLOAD: 'Download',
   BINGO_TEMPLATE_FOOTER: 'Made by Bingo Generator UWURead',
 };

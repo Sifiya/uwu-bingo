@@ -1,5 +1,5 @@
 export type BingoCell = {
   text: string;
-  sizeMultiplier: number;
+  textSize: number;
   index: number;
 };

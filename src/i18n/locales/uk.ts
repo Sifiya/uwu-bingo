@@ -10,7 +10,8 @@ export const dict = {
   CREATE_FORM_INPUT_TITLE_PLACEHOLDER: 'Введіть назву картки',
   CREATE_FORM_INPUT_CELL_LABEL: 'Текст для поточної клітинки',
   CREATE_FORM_INPUT_CELL_PLACEHOLDER: 'Наприклад: "Купити подарунок"',
-  CREATE_FORM_INPUT_CELL_NOTE: 'Оберіть клітинку, щоб змінити текст',
+  CREATE_FORM_INPUT_CELL_NOTE: 'Оберіть клітинку, щоб відредагувати текст',
+  CREATE_FORM_INPUT_CELL_SIZE_LABEL: 'Розмір тексту',
   CREATE_FORM_BUTTON_DOWNLOAD: 'Завантажити',
   BINGO_TEMPLATE_FOOTER: 'Зроблено генератором бінго UWURead',
 };

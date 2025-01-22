@@ -16,7 +16,7 @@ const Create: Component = () => {
   const [bingoCells, setBingoCells] = createSignal<BingoCell[]>(
     new Array(25).fill(null).map((_, index) => ({
       text: `Cell ${index + 1}`,
-      sizeMultiplier: 3,
+      textSize: 3,
       index,
     })),
   );
@@ -31,9 +31,9 @@ const Create: Component = () => {
     setBingoCells(prev => [...prev.slice(0, index), { ...prevCellValue, text }, ...prev.slice(index + 1)]);
   }
 
-  function onInputCellSizeMultiplier (index: number, sizeMultiplier: number) {
+  function onInputCellSizeMultiplier (index: number, textSize: number) {
     const prevCellValue = bingoCells()[index];
-    setBingoCells(prev => [...prev.slice(0, index), { ...prevCellValue, sizeMultiplier }, ...prev.slice(index + 1)]);
+    setBingoCells(prev => [...prev.slice(0, index), { ...prevCellValue, textSize }, ...prev.slice(index + 1)]);
   }
 
   function onResize () {

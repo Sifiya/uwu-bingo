@@ -35,14 +35,14 @@ export const BingoTemplateShow: Component<BingoTemplateShowProps> = (props) => {
       )}>
         {props.cells().map((cell, index) => (
           <div
-            style={{ 'word-break': 'break-word', 'font-size': `${cell.sizeMultiplier}cqw` }}
+            style={{ 'word-break': 'break-word', 'font-size': `${cell.textSize}cqw` }}
             class={cn(
               'aspect-square bg-white p-[1cqw]',
               'flex items-center justify-center',
               'text-center font-semibold',
               'overflow-hidden text-wrap break-words',
-              'cursor-pointer',
-              props.currentCell()?.index === index && 'bg-theme-200',
+              'cursor-pointer hover:bg-muted',
+              props.currentCell()?.index === index && 'bg-theme-200 hover:bg-theme-200',
             )} onClick={() => {
               props.onClickCell(index);
               document.getElementById('bingo-cell-input')?.focus();

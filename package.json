@@ -10,6 +10,7 @@
     "serve": "vite preview",
     "test": "vitest",
     "lint": "eslint .",
+    "ts:check": "tsc --noEmit",
     "format": "prettier --write ."
   },
   "license": "MIT",

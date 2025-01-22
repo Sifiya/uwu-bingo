@@ -1,7 +1,8 @@
+import { Show } from 'solid-js';
 import { useTranslationContext } from '@/i18n/context';
 import { BingoDownloadButton } from './bingoDownloadButton';
 import { TextField, TextFieldLabel, TextFieldRoot } from '@/components/ui/textfield';
-import { Paragraph } from '@/components/typography/paragraph';
+import { Alert, AlertTitle } from '@/components/ui/alert';
 import { NumberSlider } from '@/components/ui/numberSlider';
 import type { Component, Accessor } from 'solid-js';
 import type { BingoCell } from '@/types';
@@ -35,48 +36,57 @@ export const BingoTemplateForm: Component<BingoTemplateFormProps> = (props) => {
         />
       </TextFieldRoot>
 
-      <TextFieldRoot>
-        <TextFieldLabel>
-          {i18n.t('CREATE_FORM_INPUT_CELL_LABEL')}
-        </TextFieldLabel>
-        <TextField
-          id="bingo-cell-input"
-          placeholder={i18n.t('CREATE_FORM_INPUT_CELL_PLACEHOLDER')}
-          value={props.currentCell()?.text ?? ''}
-          disabled={!props.currentCell()}
-          onInput={e => {
-            let prevCell = props.currentCell();
-            if (!prevCell) return;
+      <Show when={props.currentCell()}>
+        <TextFieldRoot>
+          <TextFieldLabel>
+            {i18n.t('CREATE_FORM_INPUT_CELL_LABEL')}
+          </TextFieldLabel>
+          <TextField
+            id="bingo-cell-input"
+            placeholder={i18n.t('CREATE_FORM_INPUT_CELL_PLACEHOLDER')}
+            value={props.currentCell()?.text ?? ''}
+            disabled={!props.currentCell()}
+            onInput={e => {
+              let prevCell = props.currentCell();
+              if (!prevCell) return;
 
-            const target = e.target as HTMLInputElement;
+              const target = e.target as HTMLInputElement;
+              props.setCurrentCell({
+                ...prevCell,
+                text: target.value,
+              });
+              props.onInputCell(prevCell.index, target.value);
+            }}
+          />
+        </TextFieldRoot>
+
+        <NumberSlider
+          class="mb-2"
+          label={i18n.t('CREATE_FORM_INPUT_CELL_SIZE_LABEL')}
+          disabled={!props.currentCell()}
+          min={1.6}
+          step={0.2}
+          max={5}
+          value={[props.currentCell()?.textSize ?? 1.6]}
+          onChange={value => {
+            const prevCell = props.currentCell();
+            if (!prevCell) return;
             props.setCurrentCell({
               ...prevCell,
-              text: target.value,
+              textSize: value[0],
             });
-            props.onInputCell(prevCell.index, target.value);
+            props.onInputCellSizeMultiplier(prevCell.index, value[0]);
           }}
         />
-        <Paragraph variant="secondary" class="text-xs">
-          {i18n.t('CREATE_FORM_INPUT_CELL_NOTE')}
-        </Paragraph>
-      </TextFieldRoot>
+      </Show>
 
-      <NumberSlider
-        disabled={!props.currentCell()}
-        min={1.6}
-        step={0.2}
-        max={5}
-        value={props.currentCell()?.sizeMultiplier ?? 1}
-        onChange={value => {
-          const prevCell = props.currentCell();
-          if (!prevCell) return;
-          props.setCurrentCell({
-            ...prevCell,
-            sizeMultiplier: value,
-          });
-          props.onInputCellSizeMultiplier(prevCell.index, value);
-        }}
-      />
+      <Show when={!props.currentCell()}>
+        <Alert class="flex gap-2 text-muted-foreground/80">
+          <i class="ri-information-2-line text-xl"></i>
+          <AlertTitle>{i18n.t('CREATE_FORM_INPUT_CELL_NOTE')}</AlertTitle>
+        </Alert>
+      </Show>
+
       <BingoDownloadButton />
     </>
   );
