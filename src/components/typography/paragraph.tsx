@@ -18,6 +18,7 @@ const paragraphVariants = cva(
 );
 
 type paragraphProps = {
+  style?: JSX.CSSProperties;
   class?: string;
   children: JSX.Element | string;
   variant?: 'primary' | 'secondary';
@@ -26,6 +27,7 @@ type paragraphProps = {
 export const Paragraph: Component<paragraphProps> = (props) => {
   return (
     <p
+      style={props.style}
       class={cn(
         paragraphVariants({ variant: props.variant }),
         props.class,

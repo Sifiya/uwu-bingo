@@ -6,11 +6,23 @@ import { BingoTemplateShow } from '@/features/bingo/bingoTemplateShow';
 import { BingoTemplateForm } from '@/features/bingo/bingoTemplateForm';
 
 import type { Component } from 'solid-js';
-import type { BingoCell } from '@/types';
+import type { BingoCell, BingoColors } from '@/types';
+
+const defaultBingoColors: BingoColors = {
+  background: '#375059',
+  title: '#FFFFFF',
+  cell: '#f8f9fA',
+  text: '#375059',
+  border: '#C7D3D9',
+};
 
 const Create: Component = () => {
   const i18n = useTranslationContext();
 
+  const [bingoColors, setBingoColors] = createSignal<BingoColors>(defaultBingoColors);
+  function setDefaultBingoColors () {
+    setBingoColors(defaultBingoColors);
+  }
   const [bingoHeight, setBingoHeight] = createSignal(0);
   const [bingoTitle, setBingoTitle] = createSignal(i18n.t('CREATE_FORM_INPUT_TITLE_PLACEHOLDER'));
   const [bingoCells, setBingoCells] = createSignal<BingoCell[]>(
@@ -74,6 +86,7 @@ const Create: Component = () => {
           )}
         >
           <BingoTemplateShow
+            bingoColors={bingoColors}
             height={bingoHeight}
             title={bingoTitle}
             cells={bingoCells}
@@ -83,6 +96,9 @@ const Create: Component = () => {
         </div>
         <div class="flex flex-col gap-4 w-[300px]">
           <BingoTemplateForm
+            bingoColors={bingoColors}
+            setBingoColors={setBingoColors}
+            setDefaultBingoColors={setDefaultBingoColors}
             bingoTitle={bingoTitle}
             setBingoTitle={setBingoTitle}
             currentCell={currentCell}

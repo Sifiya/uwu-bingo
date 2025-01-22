@@ -2,10 +2,13 @@ import { Show } from 'solid-js';
 import { useTranslationContext } from '@/i18n/context';
 import { BingoDownloadButton } from './bingoDownloadButton';
 import { TextField, TextFieldLabel, TextFieldRoot } from '@/components/ui/textfield';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Alert, AlertTitle } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { ColorInput } from '@/components/ui/colorInput';
 import { NumberSlider } from '@/components/ui/numberSlider';
 import type { Component, Accessor } from 'solid-js';
-import type { BingoCell } from '@/types';
+import type { BingoCell, BingoColors } from '@/types';
 
 export type BingoTemplateFormProps = {
   bingoTitle: Accessor<string>;
@@ -14,13 +17,110 @@ export type BingoTemplateFormProps = {
   setCurrentCell: (cell: BingoCell) => void;
   onInputCell: (index: number, text: string) => void;
   onInputCellSizeMultiplier: (index: number, sizeMultiplier: number) => void;
+  bingoColors: Accessor<BingoColors>;
+  setBingoColors: (colors: BingoColors) => void;
+  setDefaultBingoColors: () => void;
 };
+
+function onChangeColor (props: {
+  color: keyof BingoColors;
+  value: string;
+  prevColors: BingoColors;
+  setter: (colors: BingoColors) => void;
+}) {
+  const newColors = {
+    ...props.prevColors,
+    [props.color]: props.value,
+  };
+  props.setter(newColors);
+}
 
 export const BingoTemplateForm: Component<BingoTemplateFormProps> = (props) => {
   const i18n = useTranslationContext();
 
   return (
     <>
+      <BingoDownloadButton />
+
+      <Collapsible>
+        <CollapsibleTrigger class="text-sm w-full flex justify-between items-center">
+          <span>Редагувати кольори</span>
+          <i class="ri-arrow-down-s-line text-xl"></i>
+        </CollapsibleTrigger>
+        <CollapsibleContent class="animate-out fade-out-0 duration-300">
+          <div class="w-full grid grid-cols-3 gap-3">
+            <ColorInput
+              label="Фон"
+              name="background"
+              value={props.bingoColors().background}
+              onChange={value => {
+                onChangeColor({
+                  color: 'background',
+                  value,
+                  prevColors: props.bingoColors(),
+                  setter: props.setBingoColors,
+                });
+              }}
+            />
+            <ColorInput
+              label="Назва"
+              name="title"
+              value={props.bingoColors().title}
+              onChange={value => {
+                onChangeColor({
+                  color: 'title',
+                  value,
+                  prevColors: props.bingoColors(),
+                  setter: props.setBingoColors,
+                });
+              }}
+            />
+            <ColorInput
+              label="Клітинка"
+              name="cell"
+              value={props.bingoColors().cell}
+              onChange={value => {
+                onChangeColor({
+                  color: 'cell',
+                  value,
+                  prevColors: props.bingoColors(),
+                  setter: props.setBingoColors,
+                });
+              }}
+            />
+            <ColorInput
+              label="Текст"
+              name="text"
+              value={props.bingoColors().text}
+              onChange={value => {
+                onChangeColor({
+                  color: 'text',
+                  value,
+                  prevColors: props.bingoColors(),
+                  setter: props.setBingoColors,
+                });
+              }}
+            />
+            <ColorInput
+              label="Межа"
+              name="text"
+              value={props.bingoColors().border}
+              onChange={value => {
+                onChangeColor({
+                  color: 'border',
+                  value,
+                  prevColors: props.bingoColors(),
+                  setter: props.setBingoColors,
+                });
+              }}
+            />
+          </div>
+          <Button variant="link" onClick={props.setDefaultBingoColors} class="w-full justify-start my-2 p-0">
+            Відновити стандартні кольори
+          </Button>
+        </CollapsibleContent>
+      </Collapsible>
+
       <TextFieldRoot>
         <TextFieldLabel>
           {i18n.t('CREATE_FORM_INPUT_TITLE_LABEL')}
@@ -36,8 +136,10 @@ export const BingoTemplateForm: Component<BingoTemplateFormProps> = (props) => {
         />
       </TextFieldRoot>
 
+      <hr class="border-muted-foreground/30" />
+
       <Show when={props.currentCell()}>
-        <TextFieldRoot>
+        <TextFieldRoot class="animate-in fade-in-0 duration-500">
           <TextFieldLabel>
             {i18n.t('CREATE_FORM_INPUT_CELL_LABEL')}
           </TextFieldLabel>
@@ -61,7 +163,7 @@ export const BingoTemplateForm: Component<BingoTemplateFormProps> = (props) => {
         </TextFieldRoot>
 
         <NumberSlider
-          class="mb-2"
+          class="mb-2 animate-in fade-in-0 duration-500"
           label={i18n.t('CREATE_FORM_INPUT_CELL_SIZE_LABEL')}
           disabled={!props.currentCell()}
           min={1.6}
@@ -87,7 +189,6 @@ export const BingoTemplateForm: Component<BingoTemplateFormProps> = (props) => {
         </Alert>
       </Show>
 
-      <BingoDownloadButton />
     </>
   );
 };
