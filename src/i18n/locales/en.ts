@@ -15,6 +15,13 @@ export const dict: RawDictionary = {
   CREATE_FORM_INPUT_CELL_NOTE: 'Select a cell to edit it\'s text',
   CREATE_FORM_INPUT_CELL_SIZE_LABEL: 'Text size',
   CREATE_FORM_BUTTON_DOWNLOAD: 'Download',
+  CREATE_FORM_COLORS_GENERAL_LABEL: 'Edit colors',
+  CREATE_FORM_COLORS_BACKGROUND_LABEL: 'Background',
+  CREATE_FORM_COLORS_TITLE_LABEL: 'Title',
+  CREATE_FORM_COLORS_CELL_LABEL: 'Cell',
+  CREATE_FORM_COLORS_TEXT_LABEL: 'Text',
+  CREATE_FORM_COLORS_BORDER_LABEL: 'Border',
+  CREATE_FORM_COLORS_BUTTON_RESET: 'Reset to default',
   BINGO_TEMPLATE_FOOTER: 'Made by Bingo Generator UWURead',
 };
 

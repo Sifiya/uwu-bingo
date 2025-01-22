@@ -42,85 +42,6 @@ export const BingoTemplateForm: Component<BingoTemplateFormProps> = (props) => {
     <>
       <BingoDownloadButton />
 
-      <Collapsible>
-        <CollapsibleTrigger class="text-sm w-full flex justify-between items-center">
-          <span>Редагувати кольори</span>
-          <i class="ri-arrow-down-s-line text-xl"></i>
-        </CollapsibleTrigger>
-        <CollapsibleContent class="animate-out fade-out-0 duration-300">
-          <div class="w-full grid grid-cols-3 gap-3">
-            <ColorInput
-              label="Фон"
-              name="background"
-              value={props.bingoColors().background}
-              onChange={value => {
-                onChangeColor({
-                  color: 'background',
-                  value,
-                  prevColors: props.bingoColors(),
-                  setter: props.setBingoColors,
-                });
-              }}
-            />
-            <ColorInput
-              label="Назва"
-              name="title"
-              value={props.bingoColors().title}
-              onChange={value => {
-                onChangeColor({
-                  color: 'title',
-                  value,
-                  prevColors: props.bingoColors(),
-                  setter: props.setBingoColors,
-                });
-              }}
-            />
-            <ColorInput
-              label="Клітинка"
-              name="cell"
-              value={props.bingoColors().cell}
-              onChange={value => {
-                onChangeColor({
-                  color: 'cell',
-                  value,
-                  prevColors: props.bingoColors(),
-                  setter: props.setBingoColors,
-                });
-              }}
-            />
-            <ColorInput
-              label="Текст"
-              name="text"
-              value={props.bingoColors().text}
-              onChange={value => {
-                onChangeColor({
-                  color: 'text',
-                  value,
-                  prevColors: props.bingoColors(),
-                  setter: props.setBingoColors,
-                });
-              }}
-            />
-            <ColorInput
-              label="Межа"
-              name="text"
-              value={props.bingoColors().border}
-              onChange={value => {
-                onChangeColor({
-                  color: 'border',
-                  value,
-                  prevColors: props.bingoColors(),
-                  setter: props.setBingoColors,
-                });
-              }}
-            />
-          </div>
-          <Button variant="link" onClick={props.setDefaultBingoColors} class="w-full justify-start my-2 p-0">
-            Відновити стандартні кольори
-          </Button>
-        </CollapsibleContent>
-      </Collapsible>
-
       <TextFieldRoot>
         <TextFieldLabel>
           {i18n.t('CREATE_FORM_INPUT_TITLE_LABEL')}
@@ -189,6 +110,84 @@ export const BingoTemplateForm: Component<BingoTemplateFormProps> = (props) => {
         </Alert>
       </Show>
 
+      <Collapsible>
+        <CollapsibleTrigger class="text-sm w-full flex justify-between items-center">
+          <span>{i18n.t('CREATE_FORM_COLORS_GENERAL_LABEL')}</span>
+          <i class="ri-arrow-down-s-line text-xl"></i>
+        </CollapsibleTrigger>
+        <CollapsibleContent class="animate-out fade-out-0 duration-300">
+          <div class="w-full grid grid-cols-3 gap-3 pt-3">
+            <ColorInput
+              label={i18n.t('CREATE_FORM_COLORS_BACKGROUND_LABEL')}
+              name="background"
+              value={props.bingoColors().background}
+              onChange={value => {
+                onChangeColor({
+                  color: 'background',
+                  value,
+                  prevColors: props.bingoColors(),
+                  setter: props.setBingoColors,
+                });
+              }}
+            />
+            <ColorInput
+              label={i18n.t('CREATE_FORM_COLORS_TITLE_LABEL')}
+              name="title"
+              value={props.bingoColors().title}
+              onChange={value => {
+                onChangeColor({
+                  color: 'title',
+                  value,
+                  prevColors: props.bingoColors(),
+                  setter: props.setBingoColors,
+                });
+              }}
+            />
+            <ColorInput
+              label={i18n.t('CREATE_FORM_COLORS_CELL_LABEL')}
+              name="cell"
+              value={props.bingoColors().cell}
+              onChange={value => {
+                onChangeColor({
+                  color: 'cell',
+                  value,
+                  prevColors: props.bingoColors(),
+                  setter: props.setBingoColors,
+                });
+              }}
+            />
+            <ColorInput
+              label={i18n.t('CREATE_FORM_COLORS_TEXT_LABEL')}
+              name="text"
+              value={props.bingoColors().text}
+              onChange={value => {
+                onChangeColor({
+                  color: 'text',
+                  value,
+                  prevColors: props.bingoColors(),
+                  setter: props.setBingoColors,
+                });
+              }}
+            />
+            <ColorInput
+              label={i18n.t('CREATE_FORM_COLORS_BORDER_LABEL')}
+              name="border"
+              value={props.bingoColors().border}
+              onChange={value => {
+                onChangeColor({
+                  color: 'border',
+                  value,
+                  prevColors: props.bingoColors(),
+                  setter: props.setBingoColors,
+                });
+              }}
+            />
+          </div>
+          <Button variant="link" onClick={props.setDefaultBingoColors} class="w-full justify-start my-2 p-0">
+            {i18n.t('CREATE_FORM_COLORS_BUTTON_RESET')}
+          </Button>
+        </CollapsibleContent>
+      </Collapsible>
     </>
   );
 };

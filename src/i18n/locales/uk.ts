@@ -13,6 +13,13 @@ export const dict = {
   CREATE_FORM_INPUT_CELL_NOTE: 'Оберіть клітинку, щоб відредагувати текст',
   CREATE_FORM_INPUT_CELL_SIZE_LABEL: 'Розмір тексту',
   CREATE_FORM_BUTTON_DOWNLOAD: 'Завантажити',
+  CREATE_FORM_COLORS_GENERAL_LABEL: 'Редагувати кольори',
+  CREATE_FORM_COLORS_BACKGROUND_LABEL: 'Фон',
+  CREATE_FORM_COLORS_TITLE_LABEL: 'Назва',
+  CREATE_FORM_COLORS_CELL_LABEL: 'Клітинка',
+  CREATE_FORM_COLORS_TEXT_LABEL: 'Текст',
+  CREATE_FORM_COLORS_BORDER_LABEL: 'Межа',
+  CREATE_FORM_COLORS_BUTTON_RESET: 'Відновити стандартні кольори',
   BINGO_TEMPLATE_FOOTER: 'Зроблено генератором бінго UWURead',
 };
 

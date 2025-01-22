@@ -13,7 +13,7 @@ const defaultBingoColors: BingoColors = {
   title: '#FFFFFF',
   cell: '#f8f9fA',
   text: '#375059',
-  border: '#C7D3D9',
+  border: '#FFFFFF',
 };
 
 const Create: Component = () => {
@@ -76,12 +76,12 @@ const Create: Component = () => {
       </Header1>
 
       <div
-        class="grow container flex flex-row justify-center gap-8"
+        class="grow container flex flex-row justify-center gap-8 overflow-hidden"
         id="bingo-container"
       >
         <div
           class={cn(
-            'flex justify-center justify-self-center items-center',
+            'flex justify-center justify-self-center items-start',
             'overflow-hidden',
           )}
         >
@@ -94,7 +94,7 @@ const Create: Component = () => {
             currentCell={currentCell}
           />
         </div>
-        <div class="flex flex-col gap-4 w-[300px]">
+        <div class="flex flex-col gap-3 w-[300px] px-1">
           <BingoTemplateForm
             bingoColors={bingoColors}
             setBingoColors={setBingoColors}
