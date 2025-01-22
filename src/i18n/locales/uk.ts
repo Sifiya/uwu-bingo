@@ -20,6 +20,8 @@ export const dict = {
   CREATE_FORM_COLORS_TEXT_LABEL: 'Текст',
   CREATE_FORM_COLORS_BORDER_LABEL: 'Межа',
   CREATE_FORM_COLORS_BUTTON_RESET: 'Відновити стандартні кольори',
+  CREATE_FORM_INPUT_EXPORT_WIDTH_LABEL: 'Ширина',
+  CREATE_FORM_INPUT_EXPORT_WIDTH_TOOLTIP: 'Ширина зображення при завантаженні',
   BINGO_TEMPLATE_FOOTER: 'Зроблено генератором бінго UWURead',
 };
 

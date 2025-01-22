@@ -60,6 +60,8 @@ const Create: Component = () => {
             setCurrentCell={createHook.setCurrentCell}
             onInputCell={createHook.onInputCell}
             onInputCellSizeMultiplier={createHook.onInputCellSizeMultiplier}
+            exportWidth={createHook.exportWidth}
+            setExportWidth={createHook.setExportWidth}
           />
         </div>
       </div>

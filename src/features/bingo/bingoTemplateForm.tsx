@@ -3,6 +3,15 @@ import { useTranslationContext } from '@/i18n/context';
 import { BingoDownloadButton } from './bingoDownloadButton';
 import { TextField, TextFieldLabel, TextFieldRoot } from '@/components/ui/textfield';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import {
+  NumberField,
+  NumberFieldDecrementTrigger,
+  NumberFieldGroup,
+  NumberFieldIncrementTrigger,
+  NumberFieldInput,
+  NumberFieldLabel,
+} from '@/components/ui/number-field';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { Alert, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { ColorInput } from '@/components/ui/colorInput';
@@ -20,6 +29,8 @@ export type BingoTemplateFormProps = {
   bingoColors: Accessor<BingoColors>;
   setBingoColors: (colors: BingoColors) => void;
   setDefaultBingoColors: () => void;
+  exportWidth: Accessor<number>;
+  setExportWidth: (width: number) => void;
 };
 
 function onChangeColor (props: {
@@ -40,7 +51,33 @@ export const BingoTemplateForm: Component<BingoTemplateFormProps> = (props) => {
 
   return (
     <>
-      <BingoDownloadButton />
+      <BingoDownloadButton exportWidth={props.exportWidth()} />
+
+      <NumberField
+        class="flex items-baseline gap-2"
+        step={100}
+        maxValue={3000}
+        minValue={300}
+        value={props.exportWidth()}
+        onRawValueChange={value => {
+          props.setExportWidth(value);
+        }}
+      >
+        <Tooltip>
+          <TooltipTrigger>
+            <NumberFieldLabel class="cursor-help">
+              {i18n.t('CREATE_FORM_INPUT_EXPORT_WIDTH_LABEL')}
+            </NumberFieldLabel>
+          </TooltipTrigger>
+          <TooltipContent>{i18n.t('CREATE_FORM_INPUT_EXPORT_WIDTH_TOOLTIP')}</TooltipContent>
+        </Tooltip>
+        <NumberFieldGroup>
+          <NumberFieldInput name="export-width" />
+          <NumberFieldIncrementTrigger />
+          <NumberFieldDecrementTrigger />
+        </NumberFieldGroup>
+        <span class="text-sm">px</span>
+      </NumberField>
 
       <TextFieldRoot>
         <TextFieldLabel>
@@ -109,6 +146,8 @@ export const BingoTemplateForm: Component<BingoTemplateFormProps> = (props) => {
           <AlertTitle>{i18n.t('CREATE_FORM_INPUT_CELL_NOTE')}</AlertTitle>
         </Alert>
       </Show>
+
+      <hr class="border-muted-foreground/30" />
 
       <Collapsible>
         <CollapsibleTrigger class="text-sm w-full flex justify-between items-center">

@@ -22,6 +22,8 @@ export const dict: RawDictionary = {
   CREATE_FORM_COLORS_TEXT_LABEL: 'Text',
   CREATE_FORM_COLORS_BORDER_LABEL: 'Border',
   CREATE_FORM_COLORS_BUTTON_RESET: 'Reset to default',
+  CREATE_FORM_INPUT_EXPORT_WIDTH_LABEL: 'Width',
+  CREATE_FORM_INPUT_EXPORT_WIDTH_TOOLTIP: 'Width of the image to download',
   BINGO_TEMPLATE_FOOTER: 'Made by Bingo Generator UWURead',
 };
 

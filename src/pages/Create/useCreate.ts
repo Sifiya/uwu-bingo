@@ -2,7 +2,7 @@ import { createSignal } from 'solid-js';
 import { useTranslationContext } from '@/i18n/context';
 import type { BingoColors, BingoCell } from '@/types';
 
-const defaultBingoColors: BingoColors = {
+const DEFAULT_BINGO_COLORS: BingoColors = {
   background: '#375059',
   title: '#FFFFFF',
   cell: '#f8f9fA',
@@ -10,11 +10,13 @@ const defaultBingoColors: BingoColors = {
   border: '#FFFFFF',
 };
 
+const DEFAULT_EXPORT_WIDTH = 1000;
+
 export function useCreate () {
   const i18n = useTranslationContext();
-  const [bingoColors, setBingoColors] = createSignal<BingoColors>(defaultBingoColors);
+  const [bingoColors, setBingoColors] = createSignal<BingoColors>(DEFAULT_BINGO_COLORS);
   function setDefaultBingoColors () {
-    setBingoColors(defaultBingoColors);
+    setBingoColors(DEFAULT_BINGO_COLORS);
   }
   const [bingoHeight, setBingoHeight] = createSignal(0);
   const [bingoTitle, setBingoTitle] = createSignal(i18n.t('CREATE_FORM_INPUT_TITLE_PLACEHOLDER'));
@@ -26,6 +28,7 @@ export function useCreate () {
     })),
   );
   const [currentCell, setCurrentCell] = createSignal<BingoCell | null>(null);
+  const [exportWidth, setExportWidth] = createSignal(DEFAULT_EXPORT_WIDTH);
 
   function onClickCell (index: number) {
     setCurrentCell(bingoCells()[index]);
@@ -67,6 +70,7 @@ export function useCreate () {
     onInputCell,
     onInputCellSizeMultiplier,
     onResize,
+    exportWidth,
+    setExportWidth,
   };
 }
-
