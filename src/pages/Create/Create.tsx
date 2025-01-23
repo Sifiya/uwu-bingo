@@ -31,13 +31,17 @@ const Create: Component = () => {
       </Header1>
 
       <div
-        class="grow container flex flex-row justify-center gap-8 overflow-hidden basis-0"
+        class={cn(
+          'flex flex-col md:flex-row justify-center items-center md:items-start',
+          'grow container gap-8 md:overflow-hidden basis-0',
+        )}
         id="bingo-container"
       >
         <div
           class={cn(
             'flex justify-center justify-self-center items-start',
             'overflow-hidden',
+            'max-w-full md:max-w-none aspect-[10/12] md:aspect-auto',
           )}
         >
           <BingoTemplateShow

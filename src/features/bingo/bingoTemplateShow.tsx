@@ -27,7 +27,7 @@ export const BingoTemplateShow: Component<BingoTemplateShowProps> = (props) => {
       id="bingo-template"
     >
       <h2
-        class="text-2xl py-[2cqw]"
+        class="text-[6cqw] py-[2cqw]"
         style={{
           'color': props.bingoColors().title,
         }}
