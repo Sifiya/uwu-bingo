@@ -25,6 +25,11 @@ export const dict: RawDictionary = {
   CREATE_FORM_INPUT_EXPORT_WIDTH_LABEL: 'Width',
   CREATE_FORM_INPUT_EXPORT_WIDTH_TOOLTIP: 'Width of the image to download',
   BINGO_TEMPLATE_FOOTER: 'Made by Bingo Generator UWURead',
+  LOGIN_MODAL_TITLE: 'Login',
+  LOGIN_MODAL_BUTTON_GOOGLE: 'Login with Google',
+  LOGIN_MODAL_BUTTON_EMAIL: 'Login with email',
+  LOGIN_MODAL_FORM_EMAIL_LABEL: 'Email',
+  LOGIN_MODAL_FORM_OR: 'Or',
 };
 
 export type Dict = typeof dict;
