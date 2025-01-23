@@ -1,4 +1,4 @@
-import { useTranslationContext } from '@/i18n/context';
+import { useTranslationContext } from '@/lib/i18n/context';
 import * as htmlToImage from 'html-to-image';
 import { Button } from '@/components/ui/button';
 import type { Component } from 'solid-js';

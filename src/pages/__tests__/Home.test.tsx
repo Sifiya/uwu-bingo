@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 import { render, screen } from '@solidjs/testing-library';
 import Home from '../Home';
-import { TranslationProvider } from '@/i18n/TranslationProvider';
+import { TranslationProvider } from '@/lib/i18n/TranslationProvider';
 
 const HomeWithProvider = () => (
   <TranslationProvider>

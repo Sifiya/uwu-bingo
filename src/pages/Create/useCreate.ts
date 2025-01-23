@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js';
-import { useTranslationContext } from '@/i18n/context';
+import { useTranslationContext } from '@/lib/i18n/context';
 import type { BingoColors, BingoCell } from '@/types';
 
 const DEFAULT_BINGO_COLORS: BingoColors = {

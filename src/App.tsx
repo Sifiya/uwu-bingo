@@ -1,4 +1,4 @@
-import { TranslationProvider } from './i18n/TranslationProvider';
+import { TranslationProvider } from './lib/i18n/TranslationProvider';
 import { Footer } from './features/footer';
 import { Header } from './features/header';
 import type { Component } from 'solid-js';

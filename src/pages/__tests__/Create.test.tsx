@@ -4,7 +4,7 @@ import { userEvent, UserEvent } from '@testing-library/user-event';
 import { t } from '@/utils/test.utils';
 
 import Create from '../Create/Create';
-import { TranslationProvider } from '@/i18n/TranslationProvider';
+import { TranslationProvider } from '@/lib/i18n/TranslationProvider';
 
 const { mockToPng } = vi.hoisted(() => ({
   mockToPng: vi.fn(),

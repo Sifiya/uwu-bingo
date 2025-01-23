@@ -1,4 +1,4 @@
-import { useTranslationContext } from '@/i18n/context';
+import { useTranslationContext } from '@/lib/i18n/context';
 import { cn } from '@/utils/class.utils';
 import { Paragraph } from '@/components/typography/paragraph';
 import type { Accessor, Component } from 'solid-js';

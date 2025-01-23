@@ -1,4 +1,4 @@
-import { useTranslationContext } from '@/i18n/context';
+import { useTranslationContext } from '@/lib/i18n/context';
 import { A } from '@solidjs/router';
 import { ThemeToggle } from './themeToggle';
 import { ModalRoot, ModalTrigger, Modal } from './modal/modal';

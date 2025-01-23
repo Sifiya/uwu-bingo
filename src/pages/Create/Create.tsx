@@ -1,5 +1,5 @@
 import { onCleanup, onMount } from 'solid-js';
-import { useTranslationContext } from '@/i18n/context';
+import { useTranslationContext } from '@/lib/i18n/context';
 import { useCreate } from './useCreate';
 import { cn } from '@/utils/class.utils';
 import { Header1 } from '@/components/typography/header1';

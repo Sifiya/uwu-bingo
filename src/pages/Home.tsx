@@ -1,4 +1,4 @@
-import { useTranslationContext } from '@/i18n/context';
+import { useTranslationContext } from '@/lib/i18n/context';
 import { cn } from '@/utils/class.utils';
 import { Button } from '@/components/ui/button';
 import { Header1 } from '@/components/typography/header1';

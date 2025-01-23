@@ -1,5 +1,5 @@
 import { Show } from 'solid-js';
-import { useTranslationContext } from '@/i18n/context';
+import { useTranslationContext } from '@/lib/i18n/context';
 import { BingoDownloadButton } from './bingoDownloadButton';
 import { TextField, TextFieldLabel, TextFieldRoot } from '@/components/ui/textfield';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
