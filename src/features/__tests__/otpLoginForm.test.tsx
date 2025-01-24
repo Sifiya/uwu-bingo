@@ -5,7 +5,8 @@ import { t, renderWrapped } from '@/utils/test.utils';
 
 import { OTPLoginForm } from '../auth/otpLoginForm';
 
-const { mockSignInWithOtp } = vi.hoisted(() => ({
+const { mockSignInWithOtp, mockNavigate } = vi.hoisted(() => ({
+  mockNavigate: vi.fn(),
   mockSignInWithOtp: vi.fn(),
 }));
 vi.mock('@supabase/supabase-js', () => ({
@@ -16,11 +17,16 @@ vi.mock('@supabase/supabase-js', () => ({
   })
 }));
 
+vi.mock('@solidjs/router', () => ({
+  useNavigate: () => mockNavigate,
+}));
+
 let user: UserEvent;
 
 describe('OTPLoginForm', () => {
   beforeEach(() => {
     user = userEvent.setup({ delay: null });
+    mockNavigate.mockReturnValue(true);
   });
 
   afterEach(() => {
@@ -103,5 +109,20 @@ describe('OTPLoginForm', () => {
 
     const submitButton = await screen.findByText(t('LOGIN_MODAL_BUTTON_EMAIL'));
     expect(submitButton).toBeDisabled();
+  });
+
+  test('redirects to otp success page after successful login', async () => {
+    mockSignInWithOtp.mockResolvedValue({
+      data: { user: null },
+      error: null
+    });
+
+    renderWrapped(() => <OTPLoginForm />);
+
+    const emailInput = await screen.findByRole('textbox');
+    await user.type(emailInput, 'new@example.com');
+    await user.click(screen.getByText(t('LOGIN_MODAL_BUTTON_EMAIL')));
+
+    expect(mockNavigate).toHaveBeenCalledWith('/otp-success');
   });
 });

@@ -33,6 +33,8 @@ export const dict: RawDictionary = {
   LOGIN_MODAL_FORM_ERROR_TITLE: 'Error while sending OTP',
   GENERAL_TEXTFIELD_REQUIRED_ERROR: 'This field is required',
   INVALID_EMAIL_ERROR: 'Invalid email format',
+  OTP_SUCCESS_TITLE: 'Email sent',
+  OTP_SUCCESS_DESCRIPTION: 'An email with a one-time link has been sent to your email',
 };
 
 export type Dict = typeof dict;

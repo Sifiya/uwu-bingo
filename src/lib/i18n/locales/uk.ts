@@ -31,6 +31,8 @@ export const dict = {
   LOGIN_MODAL_FORM_ERROR_TITLE: 'Помилка відправки',
   GENERAL_TEXTFIELD_REQUIRED_ERROR: 'Це поле є обов\'язковим',
   INVALID_EMAIL_ERROR: 'Неправильний формат email',
+  OTP_SUCCESS_TITLE: 'Листа відправлено',
+  OTP_SUCCESS_DESCRIPTION: 'На ваш email було відправлено повідомлення з одноразовим посиланням для входу',
 };
 
 export type Dict = typeof dict;

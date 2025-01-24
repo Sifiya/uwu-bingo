@@ -1,3 +1,4 @@
+import { useNavigate } from '@solidjs/router';
 import { createSignal, useTransition } from 'solid-js';
 import { supabase } from '@/lib/api/supabaseClient';
 import { z } from 'zod';
@@ -9,11 +10,11 @@ const emailSchema = z.string()
 export type EmailErrorMessageType = 'INVALID_EMAIL_ERROR';
 
 export const useOTPSignIn = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = createSignal('');
   const [isPending, startTransition] = useTransition();
   const [emailError, setEmailError] = createSignal<EmailErrorMessageType | null>(null);
   const [error, setError] = createSignal<string | null>(null);
-  const [showOTPSuccess, setShowOTPSuccess] = createSignal(false);
 
   const handleFormBlur = () => {
     const result = emailSchema.safeParse(email());
@@ -34,7 +35,7 @@ export const useOTPSignIn = () => {
         setError(error.message);
       } else {
         setError(null);
-        setShowOTPSuccess(true);
+        navigate('/otp-success');
       }
 
       return;
@@ -47,7 +48,6 @@ export const useOTPSignIn = () => {
     handleOTPSignIn,
     isPending,
     error,
-    showOTPSuccess,
     handleFormBlur,
     emailError,
   };

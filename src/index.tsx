@@ -8,6 +8,7 @@ import { Router, Route } from '@solidjs/router';
 
 const Home = lazy(() => import('./pages/Home'));
 const Create = lazy(() => import('./pages/Create/Create'));
+const OTPSuccess = lazy(() => import('./pages/OTPSuccess'));
 const root = document.getElementById('root');
 
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
@@ -21,6 +22,7 @@ render(
     <Router root={App}>
       <Route path="/" component={Home} />
       <Route path="/create" component={Create} />
+      <Route path="/otp-success" component={OTPSuccess} />
     </Router>
   ),
   root!,
