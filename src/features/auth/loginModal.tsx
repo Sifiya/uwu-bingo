@@ -1,14 +1,15 @@
 import { useTranslationContext } from '@/lib/i18n/context';
 import { ModalRoot, ModalTrigger, Modal } from '@/components/ui/modal/modal';
 import { Header1 } from '@/components/typography/header1';
-import { TextFieldRoot, TextFieldLabel, TextField } from '@/components/ui/textfield';
 import { Button } from '@/components/ui/button';
+import { OTPLoginForm } from './otpLoginForm';
 
 export const LoginModal = () => {
   const i18n = useTranslationContext();
+
   return (
     <ModalRoot>
-      <ModalTrigger>
+      <ModalTrigger class="hover:text-theme-500">
         {i18n.t('LOGIN_MODAL_TITLE')}
       </ModalTrigger>
       <Modal>
@@ -27,18 +28,7 @@ export const LoginModal = () => {
               <hr class="grow border-muted-foreground" />
             </div>
 
-            <form class="grid grid-cols-[auto_1fr] gap-y-4 gap-x-2.5 w-full">
-              <TextFieldRoot class="col-span-2 grid grid-cols-subgrid items-center">
-                <TextFieldLabel class="block">
-                  {i18n.t('LOGIN_MODAL_FORM_EMAIL_LABEL')}
-                </TextFieldLabel>
-                <TextField type="email" />
-              </TextFieldRoot>
-
-              <Button size="lg" class="col-span-2">
-                {i18n.t('LOGIN_MODAL_BUTTON_EMAIL')}
-              </Button>
-            </form>
+            <OTPLoginForm />
           </div>
         </div>
       </Modal>

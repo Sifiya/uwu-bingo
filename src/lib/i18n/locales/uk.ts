@@ -28,6 +28,7 @@ export const dict = {
   LOGIN_MODAL_BUTTON_EMAIL: 'Увійти з email',
   LOGIN_MODAL_FORM_EMAIL_LABEL: 'Email',
   LOGIN_MODAL_FORM_OR: 'Або',
+  LOGIN_MODAL_FORM_ERROR_TITLE: 'Помилка відправки',
 };
 
 export type Dict = typeof dict;

@@ -18,11 +18,12 @@ export const ModalRoot: Component<ModalRootProps> = (props) => {
 
 type ModalTriggerProps = {
   children: JSX.Element;
+  class?: string;
 };
 
 export const ModalTrigger: Component<ModalTriggerProps> = (props) => {
   const modal = useModalContext();
-  return <div onClick={modal.open}>{props.children}</div>;
+  return <button onClick={modal.open} class={props.class}>{props.children}</button>;
 };
 
 type ModalProps = {

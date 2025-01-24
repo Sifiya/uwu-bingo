@@ -30,6 +30,7 @@ export const dict: RawDictionary = {
   LOGIN_MODAL_BUTTON_EMAIL: 'Login with email',
   LOGIN_MODAL_FORM_EMAIL_LABEL: 'Email',
   LOGIN_MODAL_FORM_OR: 'Or',
+  LOGIN_MODAL_FORM_ERROR_TITLE: 'Error while sending OTP',
 };
 
 export type Dict = typeof dict;
