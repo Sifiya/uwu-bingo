@@ -1,11 +1,29 @@
 import { createSignal, useTransition } from 'solid-js';
 import { supabase } from '@/lib/api/supabaseClient';
+import { z } from 'zod';
+
+const emailSchema = z.string()
+  .email('INVALID_EMAIL_ERROR')
+  .optional();
+
+export type EmailErrorMessageType = 'INVALID_EMAIL_ERROR';
 
 export const useOTPSignIn = () => {
   const [email, setEmail] = createSignal('');
   const [isPending, startTransition] = useTransition();
+  const [emailError, setEmailError] = createSignal<EmailErrorMessageType | null>(null);
   const [error, setError] = createSignal<string | null>(null);
   const [showOTPSuccess, setShowOTPSuccess] = createSignal(false);
+
+  const handleFormBlur = () => {
+    const result = emailSchema.safeParse(email());
+    if (!result.success && email() !== '') {
+      const errorMessage = result.error.errors[0].message;
+      setEmailError(errorMessage as EmailErrorMessageType);
+    } else {
+      setEmailError(null);
+    }
+  };
 
   const handleOTPSignIn = async (e: Event) => {
     e.preventDefault();
@@ -30,5 +48,7 @@ export const useOTPSignIn = () => {
     isPending,
     error,
     showOTPSuccess,
+    handleFormBlur,
+    emailError,
   };
 };

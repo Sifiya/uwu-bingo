@@ -29,6 +29,8 @@ export const dict = {
   LOGIN_MODAL_FORM_EMAIL_LABEL: 'Email',
   LOGIN_MODAL_FORM_OR: 'Або',
   LOGIN_MODAL_FORM_ERROR_TITLE: 'Помилка відправки',
+  GENERAL_TEXTFIELD_REQUIRED_ERROR: 'Це поле є обов\'язковим',
+  INVALID_EMAIL_ERROR: 'Неправильний формат email',
 };
 
 export type Dict = typeof dict;

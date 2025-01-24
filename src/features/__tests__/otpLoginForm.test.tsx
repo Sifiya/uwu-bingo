@@ -83,4 +83,25 @@ describe('OTPLoginForm', () => {
     expect(errorTitle).toBeInTheDocument();
     expect(errorMessage).toBeInTheDocument();
   });
+
+  test('displays error message and disables button for invalid email', async () => {
+    renderWrapped(() => <OTPLoginForm />);
+
+    const emailInput = await screen.findByRole('textbox');
+    const submitButton = screen.getByText(t('LOGIN_MODAL_BUTTON_EMAIL'));
+
+    await user.type(emailInput, 'invalid-email');
+    await user.click(submitButton);
+    const validationError = await screen.findByText(t('INVALID_EMAIL_ERROR'));
+
+    expect(validationError).toBeInTheDocument();
+    expect(submitButton).toBeDisabled();
+  });
+
+  test('disables submit button when email is empty', async () => {
+    renderWrapped(() => <OTPLoginForm />);
+
+    const submitButton = await screen.findByText(t('LOGIN_MODAL_BUTTON_EMAIL'));
+    expect(submitButton).toBeDisabled();
+  });
 });
