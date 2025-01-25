@@ -31,6 +31,7 @@ export const dict: RawDictionary = {
   LOGIN_MODAL_FORM_EMAIL_LABEL: 'Email',
   LOGIN_MODAL_FORM_OR: 'Or',
   LOGIN_MODAL_FORM_ERROR_TITLE: 'Error while sending OTP',
+  LOGOUT_BUTTON: 'Logout',
   GENERAL_TEXTFIELD_REQUIRED_ERROR: 'This field is required',
   INVALID_EMAIL_ERROR: 'Invalid email format',
   OTP_SUCCESS_TITLE: 'Email sent',

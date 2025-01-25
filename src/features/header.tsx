@@ -4,11 +4,11 @@ import { A } from '@solidjs/router';
 import { ThemeToggle } from './themeToggle';
 import { LoginModal } from './auth/loginModal';
 import { Match, Switch } from 'solid-js';
+import { LogoutButton } from './auth/logoutButton';
 
 import type { Component } from 'solid-js';
 
-const linkActiveClass = 'text-theme-300 hover:text-theme-300';
-const linkClass = 'hover:text-theme-500';
+const linkClass = 'text-theme-700 hover:text-theme-500';
 
 export const Header: Component = () => {
   const auth = useSessionContext();
@@ -18,10 +18,10 @@ export const Header: Component = () => {
       <div class="flex flex-row gap-2.5">
         <ThemeToggle />
         <nav class="flex gap-2.5">
-          <A href="/" activeClass={linkActiveClass} class={linkClass}>
+          <A href="/" class={linkClass}>
             {i18n.t('HEADER_NAV_HOME')}
           </A>
-          <A href="/create" activeClass={linkActiveClass} class={linkClass}>
+          <A href="/create" class={linkClass}>
             {i18n.t('HEADER_NAV_CREATE')}
           </A>
         </nav>
@@ -32,7 +32,7 @@ export const Header: Component = () => {
           <LoginModal />
         </Match>
         <Match when={auth?.session()}>
-          <p>Logged in</p>
+          <LogoutButton />
         </Match>
       </Switch>
     </header>
